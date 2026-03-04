@@ -1,0 +1,48 @@
+{
+  "hooks": [
+    {
+      "event": "SessionStart",
+      "command": "echo '\\n════════════════════════════════════════════════\\nFORTUNE 500 AI BUSINESS OPERATING SYSTEM\\n════════════════════════════════════════════════\\nActive agents: CEO | CFO | COO | GC | CTO | CMO | CRO | CHRO | Chief of Staff | Internal Audit | Board\\n\\nKey commands:\\n  /start-initiative    Launch a new initiative\\n  /governance-check    Validate initiative governance status\\n  /pre-approval        Run full approval validation pipeline\\n  /board-report        Generate board report package\\n  /risk-assessment     Score enterprise risk\\n  /legal-review        Route matter to General Counsel\\n  /budget-request      Formal budget approval workflow\\n  /regulatory-check    Regulatory compliance screen\\n  /qbr                 Quarterly Business Review\\n  /crisis-response     Activate crisis response protocol\\n  /earnings-prep       Earnings preparation (public companies)\\n  /m-and-a-diligence   M&A due diligence workflow\\n  /end-initiative      Close-out an initiative\\n  /strategic-review    Annual strategic planning\\n\\nDecision Authority Matrix active. All financial/legal thresholds enforced.\\n════════════════════════════════════════════════'"
+    },
+    {
+      "event": "PreToolUse",
+      "matcher": "financial_commitment",
+      "command": "echo 'GOVERNANCE CHECK: Financial commitment detected. Verify DAM authority level before proceeding. Run /budget-request if threshold exceeded.'",
+      "conditions": {
+        "tool": "Write",
+        "pattern": "\\$[0-9]"
+      }
+    },
+    {
+      "event": "PreToolUse",
+      "matcher": "external_communication",
+      "command": "echo 'GOVERNANCE CHECK: External communication detected. GC review required before any public statement, press release, or investor communication.'",
+      "conditions": {
+        "tool": "Write",
+        "file_pattern": "press-release|investor|public-statement|announcement"
+      }
+    },
+    {
+      "event": "PreToolUse",
+      "matcher": "board_materials",
+      "command": "echo 'GOVERNANCE CHECK: Board material detected. Ensure GC review is complete before distribution. All board materials are permanent corporate records.'",
+      "conditions": {
+        "tool": "Write",
+        "file_pattern": "board-report|board-deck|proxy"
+      }
+    },
+    {
+      "event": "PostToolUse",
+      "matcher": "initiative_brief",
+      "command": "echo 'GOVERNANCE REMINDER: Initiative Brief updated. Ensure routing has been initiated to required approvers per DAM. Run /governance-check to validate status.'",
+      "conditions": {
+        "tool": "Write",
+        "file_pattern": "INI-[0-9]"
+      }
+    },
+    {
+      "event": "SessionEnd",
+      "command": "echo '\\nGOVERNANCE CLOSE REMINDER:\\n- Are all open initiative actions logged with owners and deadlines?\\n- Are any pending approvals awaiting a response?\\n- Are there time-sensitive regulatory or legal matters requiring follow-up?\\n- Has the initiative register been updated?\\nFortune 500 AI Business Operating System — Session End'"
+    }
+  ]
+}
