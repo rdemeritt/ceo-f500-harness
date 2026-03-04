@@ -47,7 +47,7 @@ All financial, legal, operational, and strategic decisions route through this ma
 ### Regulatory Compliance Hard Stops
 
 - **SOX:** Any change affecting financial controls → GC + CFO review
-- **GDPR/CCPA:** Any data subject rights or processing change → GC + CISO review
+- **GDPR/CCPA:** Any data subject rights or processing change → GC + CISO co-sign required
 - **SEC:** Any material non-public information handling → GC immediate stop
 - **OSHA/Labor:** Any workplace safety or HR policy change → CHRO + GC review
 - **Industry-specific:** Flagged by Regulatory Check workflow before proceeding
@@ -113,6 +113,9 @@ Each agent must signal a specific exit state before the next stage begins:
 | CFO | "Budget approved. Financial controls confirmed." |
 | GC | "Legal review complete. No material issues." or "Legal hold — do not proceed." |
 | COO | "Operations plan confirmed. Execution authorized." |
+| CISO | "CISO review complete. [CLEARED | CONDITIONAL | HOLD — SECURITY RISK]. Regulatory flags: [NONE | GC NOTIFICATION REQUIRED]." |
+| Corp Comms | "Corp Comms review complete. [CLEARED FOR RELEASE | CONDITIONAL | HOLD — DO NOT RELEASE]. Legal clearance: [CONFIRMED | REQUIRED]." |
+| IR | "IR review complete. [CLEARED FOR DISCLOSURE | CONDITIONAL | HOLD — MNPI RISK]. Reg FD status: [COMPLIANT | FLAG FOR GC]." |
 | BU Heads | "Deliverable complete. Ready for Internal Audit." |
 | Internal Audit | "IA validation complete. Approved for Board/CEO review." |
 | CEO | "Approved for execution." or "Returned for revision." |
@@ -202,6 +205,9 @@ AUDITOR=[BIG4_FIRM]
 | COO | Operational systems, all-read | Financial approvals |
 | GC | Legal systems, all-read | Business decisions |
 | CHRO | HR systems, all-read | Financial commitments |
+| CISO | Security systems, read-all | Business decisions; cannot be blocked from any system read |
+| Corp Comms | Comms systems, read-all | Financial systems; cannot release externally without GC clearance |
+| IR | IR systems, financial read, SEC filing | Trading systems; cannot discuss MNPI without simultaneous disclosure |
 | Internal Audit | Read-only ALL systems | Write to any operational system |
 | Board | Review/approve only | Day-to-day operations |
 

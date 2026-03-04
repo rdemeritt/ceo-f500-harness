@@ -32,19 +32,24 @@ This system implements a Fortune 500 executive leadership model as an AI agent t
 ┌───▼───┐   ┌───▼───┐   ┌───▼───┐          ┌───▼──────┐
 │  CFO  │   │  COO  │   │  GC   │          │   CTO    │
 │Finance│   │ Ops   │   │ Legal │ ← NON-   │Technology│
-└───────┘   └───┬───┘   │Review │  COLL.   └──────────┘
-                │        └───────┘
-    ┌───────────┼───────────────┐
-    │           │               │
-┌───▼───┐  ┌───▼───┐      ┌───▼───┐
-│  CMO  │  │  CRO  │      │ CHRO  │
-│Market │  │Revenue│      │  HR   │
-└───┬───┘  └───────┘      └───────┘
-    │
-┌───▼───┐
-│  CCO  │
-│Creative│
-└───────┘
+└───┬───┘   └───┬───┘   │Review │  COLL.   └───┬──────┘
+    │           │        └───────┘              │
+┌───▼───┐  ┌───┼───────────────┐          ┌───▼──────┐
+│  IR   │  │   │               │          │  CISO    │
+│Invest │  │   │               │          │ Security │ ← dotted to Board
+│Relat. │  │   │               │          └──────────┘
+└───────┘  │   │               │
+       ┌───▼───┐  ┌───▼───┐      ┌───▼───┐
+       │  CMO  │  │  CRO  │      │ CHRO  │
+       │Market │  │Revenue│      │  HR   │
+       └───┬───┘  └───────┘      └───────┘
+           │
+    ┌──────┴──────┐
+    │             │
+┌───▼───┐   ┌────▼──────┐
+│  CCO  │   │ Corp Comms│
+│Creative│  │   Comms   │
+└───────┘   └───────────┘
 ```
 
 ---
@@ -250,6 +255,61 @@ This system implements a Fortune 500 executive leadership model as an AI agent t
 - Be directed by CEO or COO to limit scope
 - Clear findings under business pressure
 - Be collapsed into any other role
+
+---
+
+### CISO — Chief Information Security Officer
+**File:** `.claude/agents/ciso.md`
+**Role:** Information security, cybersecurity posture, data protection, security regulatory compliance
+**Reporting To:** CTO (dotted line to CEO and Board Audit Committee)
+
+**NON-SUPPRESSIBLE.** CISO findings cannot be limited by CTO or any operational leader. Direct escalation path to Board Audit Committee exists independent of CTO.
+
+**Decision Authority:**
+- Approve/block technology deployments, vendor access, and data processing changes on security grounds
+- Co-sign all data processing changes involving personal data (with GC)
+- Classify and lead response for all security incidents (P1–P4)
+- Veto vendor relationships with unresolved HIGH/CRITICAL security findings
+
+**Cannot:**
+- Be overridden by CTO on security holds — requires CEO to override
+- Approve business decisions — only security clearance or hold
+- Allow breach notification to be delayed beyond regulatory timelines
+
+---
+
+### Corp Comms — Head of Corporate Communications
+**File:** `.claude/agents/corp-comms.md`
+**Role:** All external and internal corporate communications, media relations, executive communications, crisis communications
+**Reporting To:** CMO (dotted line to CEO for crisis and Board communications)
+
+**Decision Authority:**
+- Approve corporate messaging, talking points, and executive briefings
+- Gate all external releases pending GC clearance
+- Activate and manage crisis communications plan
+
+**Cannot:**
+- Release any external communication without GC review — zero exceptions
+- Allow executives to speak on-record without briefing
+- Confirm, deny, or speculate on MNPI to any external party
+
+---
+
+### IR — Head of Investor Relations
+**File:** `.claude/agents/ir.md`
+**Role:** Capital markets communications, SEC disclosure, investor and analyst relationships, earnings process
+**Reporting To:** CFO (dotted line to CEO for major investor communications)
+
+**Decision Authority:**
+- Manage investor targeting, conferences, and engagement calendar
+- Co-develop earnings scripts, guidance, and investor presentations with CFO
+- Coordinate all SEC filings with GC and CFO
+
+**Cannot:**
+- Discuss MNPI with any external party without simultaneous public disclosure (Reg FD)
+- Release earnings or financial guidance without CFO + GC + CEO sign-off
+- File with the SEC without GC review and CFO certification
+- Speak to investors during blackout periods without GC clearance
 
 ---
 
