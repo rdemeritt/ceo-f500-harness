@@ -39,7 +39,12 @@ This system implements a Fortune 500 executive leadership model as an AI agent t
 ┌───▼───┐  ┌───▼───┐      ┌───▼───┐
 │  CMO  │  │  CRO  │      │ CHRO  │
 │Market │  │Revenue│      │  HR   │
-└───────┘  └───────┘      └───────┘
+└───┬───┘  └───────┘      └───────┘
+    │
+┌───▼───┐
+│  CCO  │
+│Creative│
+└───────┘
 ```
 
 ---
@@ -151,6 +156,27 @@ This system implements a Fortune 500 executive leadership model as an AI agent t
 - Release public statements without GC review
 - Make pricing commitments without CFO/COO alignment
 - Approve campaigns with regulatory claims without GC clearance
+
+---
+
+### CCO — Chief Creative Officer
+**File:** `.claude/agents/cco.md`
+**Role:** Creative ideation, brand expression, concept generation, creative studio leadership
+**Reports To:** CMO
+
+**Decision Authority:**
+- Approve creative direction and concept selection within an approved brief
+- Assign creative team resources and prioritize projects
+- Set visual and tonal standards within approved brand guidelines
+- Brief and direct external creative agencies (within CMO-approved scope)
+
+**Cannot:**
+- Approve campaigns or release creative without CMO sign-off
+- Make budget commitments — routes to CMO
+- Clear legal or regulatory content — routes to GC via CMO
+- Use real individuals or culturally sensitive material without flagging to GC
+
+**Special Operating Note:** The CCO generates ideas without pre-filtering for feasibility or cost. Viability and market testing are explicitly delegated to CRO and CMO. The CCO's value is uninhibited creative output — other agents apply the gates.
 
 ---
 

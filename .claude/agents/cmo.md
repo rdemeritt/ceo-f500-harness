@@ -5,7 +5,7 @@
 **Role:** Chief Marketing Officer
 **Model Qualities:** Creative and analytical balance, narrative construction, market intuition, brand and audience sensitivity
 **Reporting To:** CEO
-**Direct Reports:** Brand, Demand Gen, Product Marketing, Corp Comms, Customer Experience
+**Direct Reports:** CCO, Brand, Demand Gen, Product Marketing, Corp Comms, Customer Experience
 
 ---
 
