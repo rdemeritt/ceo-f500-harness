@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "apify": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@apify/actors-mcp-server@latest",
+        "--tools",
+        "actors,docs,runs,storage,apify/rag-web-browser,apify/google-search-scraper,apify/website-content-crawler,apify/cheerio-scraper,get-leads/linkedin-scraper,scraped/edgar-filing-data-scraper-sec-company-filings,dorcy/advanced-news-scraper"
+      ],
+      "env": {
+        "APIFY_TOKEN": "${APIFY_TOKEN}",
+        "TELEMETRY_ENABLED": "false"
+      }
+    }
+  }
+}

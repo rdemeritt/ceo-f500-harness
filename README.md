@@ -94,6 +94,7 @@ Invoke governance workflows directly from the Claude Code command line:
 | Command | Purpose |
 |---|---|
 | `/ideate [idea fragment]` | Expand a rough idea into three creative territories via CCO + multi-lens review |
+| `/research [topic or question]` | Governed web research via Apify — competitive, regulatory, market, threat, investor |
 | `/start-initiative [objective]` | Launch the full initiative lifecycle with OKR mapping and governance routing |
 | `/governance-check` | Validate governance status of an active initiative |
 | `/pre-approval` | Run the pre-approval validation pipeline before committing resources |
@@ -119,6 +120,51 @@ The CCO generates three named creative territories. CMO, CRO, and CTO each react
 
 ---
 
+## Web Research — Apify Integration
+
+The harness includes a governed web research capability via the [Apify MCP server](https://apify.com/apify/actors-mcp-server). Authorized agents can initiate structured research requests — competitive intelligence, regulatory monitoring, news, SEC filings, threat intelligence, LinkedIn company data — without leaving the harness or bypassing governance.
+
+### How It Works
+
+The Apify MCP server runs alongside Claude Code and exposes a **pinned set of actors** as callable tools. Agents invoke actors through the `/research` command; results are synthesized into a structured Research Brief with source citations, confidence ratings, and governance flags.
+
+Dynamic actor discovery from Apify's full 23,000+ actor marketplace is intentionally disabled. All research runs through a governed, cost-controlled actor catalog.
+
+### Pinned Actors
+
+| Actor | Use Case |
+|---|---|
+| `apify/rag-web-browser` | General web search + LLM-ready page summaries |
+| `apify/google-search-scraper` | Structured SERP data, news queries |
+| `apify/website-content-crawler` | Full competitor or regulatory site crawl |
+| `apify/cheerio-scraper` | Fast extraction from static HTML sources |
+| `get-leads/linkedin-scraper` | Company profiles, executive data, org structure |
+| `scraped/edgar-filing-data-scraper-sec-company-filings` | 10-K, 10-Q, 8-K, proxy filings |
+| `dorcy/advanced-news-scraper` | News monitoring across 4,500+ sources |
+
+### Research Types and Lead Agents
+
+| Research Type | Lead Agent | Actors Used |
+|---|---|---|
+| Competitive intelligence | CRO / CMO | Google Search → Website Crawler → LinkedIn |
+| Market / industry trends | CMO / Chief of Staff | RAG Browser → News Scraper |
+| Regulatory monitoring | GC | Google Search → Cheerio Scraper |
+| Threat intelligence | CISO | Google Search → RAG Browser |
+| Investor / analyst coverage | IR | EDGAR Scraper → RAG Browser |
+| Company / M&A diligence | Chief of Staff / CRO | Website Crawler → LinkedIn → EDGAR |
+| News monitoring | Corp Comms | News Scraper → Google Search |
+
+### Setup
+
+1. Sign up at [apify.com](https://apify.com) and get your API token
+2. Set `APIFY_TOKEN` in your environment or `.env` file
+3. The `.mcp.json` configuration is already included — Claude Code picks it up automatically
+4. Run `/mcp` to verify the server is connected
+
+See `.claude/SETUP.md` Step 5 for the full setup walkthrough and `.claude/skills/web-research/README.md` for the complete actor catalog, cost table, agent access controls, and legal boundaries.
+
+---
+
 ## Skill Library
 
 17 underlying skills that agents draw on across workflows:
@@ -140,6 +186,7 @@ The CCO generates three named creative territories. CMO, CRO, and CTO each react
 - HR Patterns
 - Revenue Operations
 - Change Management
+- Web Research (Apify)
 
 ---
 

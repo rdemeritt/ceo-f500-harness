@@ -205,9 +205,9 @@ AUDITOR=[BIG4_FIRM]
 | COO | Operational systems, all-read | Financial approvals |
 | GC | Legal systems, all-read | Business decisions |
 | CHRO | HR systems, all-read | Financial commitments |
-| CISO | Security systems, read-all | Business decisions; cannot be blocked from any system read |
-| Corp Comms | Comms systems, read-all | Financial systems; cannot release externally without GC clearance |
-| IR | IR systems, financial read, SEC filing | Trading systems; cannot discuss MNPI without simultaneous disclosure |
+| CISO | Security systems, read-all, Apify (threat intel scope) | Business decisions; cannot be blocked from any system read |
+| Corp Comms | Comms systems, read-all, Apify (news monitoring scope) | Financial systems; cannot release externally without GC clearance |
+| IR | IR systems, financial read, SEC filing, Apify (investor/EDGAR scope) | Trading systems; cannot discuss MNPI without simultaneous disclosure |
 | Internal Audit | Read-only ALL systems | Write to any operational system |
 | Board | Review/approve only | Day-to-day operations |
 
