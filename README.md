@@ -93,6 +93,7 @@ Invoke governance workflows directly from the Claude Code command line:
 
 | Command | Purpose |
 |---|---|
+| `/setup-apify` | Configure the Apify MCP integration — collects token, saves to `.env`, verifies connection |
 | `/ideate [idea fragment]` | Expand a rough idea into three creative territories via CCO + multi-lens review |
 | `/research [topic or question]` | Governed web research via Apify — competitive, regulatory, market, threat, investor |
 | `/start-initiative [objective]` | Launch the full initiative lifecycle with OKR mapping and governance routing |
@@ -251,8 +252,8 @@ Financial figures always include exact amounts, currency, time period, and sourc
     │   ├── chief-of-staff.md
     │   ├── internal-audit.md
     │   └── board.md
-    ├── commands/                    # 15 slash commands
-    └── skills/                     # 17 domain skill libraries
+    ├── commands/                    # 16 slash commands
+    └── skills/                     # 18 domain skill libraries
 ```
 
 ---
@@ -266,6 +267,8 @@ Financial figures always include exact amounts, currency, time period, and sourc
 **3. Add industry regulations** — Open `.claude/skills/regulatory-compliance/README.md` and add your applicable frameworks (FINRA, HIPAA, FERC, ITAR, etc.).
 
 **4. Populate agent context** — For each agent in `.claude/agents/`, add a Company Context section with current OKRs, active initiatives, known risks, and key stakeholder names.
+
+**5. Configure Apify web research** — Run `/setup-apify` inside Claude Code. It will prompt for your API token, save it to `.env`, and verify the MCP connection. No manual file editing required.
 
 See `.claude/SETUP.md` for the full configuration walkthrough.
 

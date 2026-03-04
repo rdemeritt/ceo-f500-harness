@@ -2,7 +2,7 @@
 
 ## Overview
 
-This system transforms Claude Code into a Fortune 500 executive AI team. Before using the system, complete this 4-step setup to configure it for your specific company.
+This system transforms Claude Code into a Fortune 500 executive AI team. Before using the system, complete this 5-step setup to configure it for your specific company.
 
 ---
 
@@ -58,43 +58,6 @@ Also adjust the automatic legal triggers in `CLAUDE.md` to match your GC's actua
 
 ---
 
-## Step 5: Configure Apify Web Research (10 minutes)
-
-The harness uses Apify for governed web research — competitive intelligence, news monitoring, SEC filings, threat intelligence, and more. The MCP server configuration is already in `.mcp.json`. You only need to supply your API token.
-
-**1. Get your Apify API token**
-Sign up at [apify.com](https://apify.com) and retrieve your token from the Apify Console under **Integrations**.
-
-**2. Set the environment variable**
-Add to your shell profile (`.zshrc`, `.bashrc`, etc.):
-```bash
-export APIFY_TOKEN=your_token_here
-```
-
-Or create a `.env` file in the project root (already gitignored):
-```
-APIFY_TOKEN=your_token_here
-```
-
-**3. Verify the MCP server loads**
-Start a new Claude Code session. Run `/mcp` — you should see `apify` listed as a connected server with the pinned actors available.
-
-**4. Plan selection**
-The harness uses a pinned actor set (no open-ended Store access). Most research runs cost < $1. See `.claude/skills/web-research/README.md` for the full cost table. Start with Apify's **Starter plan ($39/month)** or use the free tier ($5 credits) for evaluation.
-
-**Pinned actors included:**
-- `apify/rag-web-browser` — general web search and page summarization
-- `apify/google-search-scraper` — structured SERP data
-- `apify/website-content-crawler` — full site analysis
-- `apify/cheerio-scraper` — fast static HTML extraction
-- `get-leads/linkedin-scraper` — company and executive profiles
-- `scraped/edgar-filing-data-scraper-sec-company-filings` — SEC EDGAR filings
-- `dorcy/advanced-news-scraper` — news monitoring across 4,500+ sources
-
-**Note:** Dynamic actor discovery from the full Apify Store (23,000+ actors) is intentionally disabled. All research runs through the governed pinned set. To add an actor, route to CTO for evaluation.
-
----
-
 ## Step 4: Populate Agent Context (30 minutes)
 
 For each agent in `.claude/agents/`, add company-specific context:
@@ -111,6 +74,22 @@ This context helps each agent operate with awareness of your actual business sta
 
 ---
 
+## Step 5: Configure Apify Web Research (2 minutes)
+
+The harness uses Apify for governed web research — competitive intelligence, news monitoring, SEC filings, threat intelligence, and more. The MCP server configuration is already in `.mcp.json`.
+
+Run the built-in setup command:
+
+```
+/setup-apify
+```
+
+This will walk you through obtaining your API token, save it securely to `.env` (gitignored), and verify the MCP configuration. No manual file editing required.
+
+**Plan selection:** Most research runs cost < $1. Start with Apify's **Starter plan ($39/month)** or use the free tier ($5 credits) for evaluation. See `.claude/skills/web-research/README.md` for the full cost and actor reference.
+
+---
+
 ## Verification Checklist
 
 Before first use:
@@ -121,6 +100,7 @@ Before first use:
 - [ ] At least CEO, CFO, and GC agents have company context
 - [ ] Hooks config is reviewed and appropriate
 - [ ] Templates reviewed by GC for any legal language gaps
+- [ ] `/setup-apify` completed and `/mcp` confirms Apify server connected
 
 ---
 
