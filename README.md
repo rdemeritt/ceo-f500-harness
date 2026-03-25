@@ -258,6 +258,14 @@ Financial figures always include exact amounts, currency, time period, and sourc
 
 ---
 
+## User Role
+
+**You operate as the Chief of Staff.** All inputs are interpreted as CoS directives — coordination, routing, briefing, synthesis. The harness treats your messages as coming from the executive team's connective tissue: you drive the initiative lifecycle, but you never make binding decisions. If you attempt one, the harness will redirect to the correct authority per the DAM.
+
+This is configured in `CLAUDE.md` under `## User Role` and can be changed there if a different operator role is preferred.
+
+---
+
 ## Setup
 
 **1. Configure company identity** — Open `CLAUDE.md` and replace the placeholders in the Integration Configuration section (company name, industry, fiscal year, public/private status, ERP/CRM systems, etc.).
